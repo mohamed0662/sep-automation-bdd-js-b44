@@ -8,7 +8,17 @@ Feature: Display the steps of the checkout process
     #* AC3: The system should display "Payment Plan" and "Review" in grey.
 
 
-    #TODO: Create scenarios that cover all the acceptance criteria
-
     Background:
         Given user is on the enrollment page
+
+    @sep08-1
+    Scenario: Display checkout process steps in order
+        Then the checkout process displays the Start Application, Payment Plan, and Review steps in order
+
+    @sep08-2
+    Scenario: Highlight Start Application in blue
+        Then the Start Application step is highlighted in blue
+
+    @sep08-3
+    Scenario: Display Payment Plan and Review in grey
+        Then the Payment Plan and Review steps are grey
