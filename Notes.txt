@@ -50,5 +50,6 @@ Automation Testing Workflow:
                 RCA (Root Cause Analysis)
                 Determine why test is failed
                 Analyze if it failed due to the product defect that i should be reporting 
+                
 
      5- Push to the github feature branch, create Pull Request          
