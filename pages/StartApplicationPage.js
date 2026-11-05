@@ -107,6 +107,8 @@ export class StartApplicationPage extends BasePage {
 
     this.refundEndDate = page.locator("(//b[@class='info-value'])[2]");
 
+    this.refundPolicyText = page.getByText("100% refund", { exact: true });
+
     this.programNameOnInfoCard = page.locator(
       "//p[@class='program-title primary-color']"
     );
