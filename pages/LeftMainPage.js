@@ -13,13 +13,22 @@ export class LeftMainPage extends BasePage {
 
     this.secureCheckout = page.locator("//p[@class='checkout-title']");
 
-    this.footerElements = page.locator(
-      "//a[contains(@href, 'https://cydeo.com/')]"
+    this.cydeoLogoAtCheckoutHeader = page.locator(
+      ".checkout-title img[src='assets/images/logo.svg']"
     );
 
-    this.programName = page.locator("//p[@class='course-name']/a");
-    
-  }
+    this.leftFooterLinks = page.locator(".details-footer a");
 
-  
+    this.cydeoLogoInLeftFooter = this.leftFooterLinks
+      .first()
+      .locator("img[src='assets/images/logo.svg']");
+
+    this.programName = page.locator("//p[@class='course-name']/a");
+
+    this.rightFooterHelpMessage = page
+      .locator(".right-footer:visible")
+      .getByText("Need help? Contact us at enrollment@cydeo.com", {
+        exact: true,
+      });
+  }
 }
