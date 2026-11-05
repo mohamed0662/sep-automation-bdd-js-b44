@@ -7,21 +7,33 @@ export class StartApplicationPage extends BasePage {
   constructor(page) {
     super(page);
 
-    this.startApplicationText = page.locator(
-      "(//div[@class = 'step-title'])[1]"
+    this.checkoutStepper = page.locator("#stepper1");
+
+    this.startApplicationText = this.checkoutStepper.getByText(
+      "Start Application",
+      { exact: true }
     );
 
-    this.paymentPlanText = page.locator("(//div[@class = 'step-title'])[2]");
+    this.paymentPlanText = this.checkoutStepper.getByText("Payment plan", {
+      exact: true,
+    });
 
-    this.reviewText = page.locator("(//div[@class = 'step-title'])[3]");
+    this.reviewText = this.checkoutStepper.getByText("Review", { exact: true });
 
-    this.startApplicationStepCircle = page.locator(
-      "(//*[@class='step-circle'])[1]"
-    );
+    this.startApplicationStepCircle = this.checkoutStepper
+      .locator(".step")
+      .filter({ hasText: "Start Application" })
+      .locator(".step-circle");
 
-    this.paymentPlanStepCircle = page.locator("(//*[@class='step-circle'])[2]");
+    this.paymentPlanStepCircle = this.checkoutStepper
+      .locator(".step")
+      .filter({ hasText: "Payment plan" })
+      .locator(".step-circle");
 
-    this.reviewStepCircle = page.locator("(//*[@class='step-circle'])[3]");
+    this.reviewStepCircle = this.checkoutStepper
+      .locator(".step")
+      .filter({ hasText: "Review" })
+      .locator(".step-circle");
 
     this.firstNameInputBox = page.locator("[formcontrolname='firstName']");
 
