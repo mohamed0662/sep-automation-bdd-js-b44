@@ -43,43 +43,56 @@ export class StartApplicationPage extends BasePage {
 
     this.phoneNumberInputBox = page.locator("[formcontrolname='phoneNumber']");
 
-    this.howDidYouHearAboutUsDropDown = page.getByText(
-      "How did you hear about us?",
-      { exact: true }
+    this.invalidPersonalDetailInputs = page.locator(
+      "input[formcontrolname]:invalid"
     );
+
+    this.howDidYouHearAboutUsDropDown = page.getByRole("combobox", {
+      name: "How did you hear about us?",
+      exact: true,
+    });
 
     this.emailOptionFromDropDown = page.getByRole("option", {
       name: "Email",
       exact: true,
     });
 
-    this.facebookOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'Facebook')]"
-    );
+    this.facebookOptionFromDropDown = page.getByRole("option", {
+      name: "Facebook",
+      exact: true,
+    });
 
-    this.googleOption = page.locator(
-      "//mat-option/span[contains(text(), 'Google')]"
-    );
+    this.googleOption = page.getByRole("option", {
+      name: "Google",
+      exact: true,
+    });
 
-    this.instagramOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'Instagram')]"
-    );
+    this.instagramOptionFromDropDown = page.getByRole("option", {
+      name: "Instagram",
+      exact: true,
+    });
 
-    this.linkedInOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'LinkedIN')]"
-    );
+    this.linkedInOptionFromDropDown = page.getByRole("option", {
+      name: "LinkedIN",
+      exact: true,
+    });
 
-    this.twitterOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'Twitter')]"
-    );
+    this.twitterOptionFromDropDown = page.getByRole("option", {
+      name: "Twitter",
+      exact: true,
+    });
 
-    this.referredByFriedOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'Referred by a friend')]"
-    );
+    this.referredByFriedOptionFromDropDown = page.getByRole("option", {
+      name: "Referred by a friend",
+      exact: true,
+    });
 
-    this.otherOptionFromDropDown = page.locator(
-      "//mat-option/span[contains(text(), 'Other')]"
-    );
+    this.otherOptionFromDropDown = page.getByRole("option", {
+      name: "Other",
+      exact: true,
+    });
+
+    this.referralSourceOptions = page.getByRole("option");
 
     this.firstNameInputBoxForParents = page.locator(
       "(//input[@formcontrolname='firstName'])[2]"
@@ -192,6 +205,10 @@ export class StartApplicationPage extends BasePage {
 
   async clickNextButton() {
     await this.nextButton.click();
+  }
+
+  async openReferralSourceDropdown() {
+    await this.howDidYouHearAboutUsDropDown.press("Enter");
   }
 
   /**
